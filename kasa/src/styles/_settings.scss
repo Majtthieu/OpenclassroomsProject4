@@ -1,0 +1,26 @@
+@mixin displayFc() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$color1: #ff6060;
+$color2: #f6f6f6;
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  // border: solid 1px red;
+}
+
+.wrapper {
+  max-width: 1240px;
+  margin: auto;
+}
+
+li {
+  list-style: none;
+}

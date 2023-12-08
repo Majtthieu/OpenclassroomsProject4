@@ -3,15 +3,21 @@ header
   display: flex
   align-items: center
   justify-content: space-between
-  padding: 2rem 3rem
+  margin: 2.5rem 0
 
 .navbar
-  width: 500px
   display: flex
-  justify-content: flex-end
+
+  ul
+    display: flex
+    gap: 2.5rem
 
   a
-    text-decoration: none
-    color: red
-    padding: 1rem
+    color: $color1
     font-size: 1.5rem
+
+.active
+  text-decoration: underline
+
+.notactive
+  text-decoration: none

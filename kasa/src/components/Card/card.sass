@@ -1,0 +1,62 @@
+.cards-container
+    background-color: $color2
+    border-radius: 1.5rem
+    display: flex
+    flex-wrap: wrap
+    gap: 3.125rem 3.75rem
+    padding: 3.5rem 3.125rem
+
+.card-content
+    border-radius: 0.7rem
+    width: 340px
+    height: 340px
+    position: relative
+    cursor: pointer
+    transition: transform 330ms ease-in-out
+
+    &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(0, 0, 0, 0.50) 100%)
+        z-index: 1
+        border-radius: 0.7rem
+
+    &:hover
+        transform: scale(1.05)
+
+        // ul
+        //     visibility: visible
+        // p
+        //     top: 15%
+        // &::before
+        //     background-color: $color1
+        //     transition: background-color 1s
+
+    img
+        border-radius: 0.7rem
+        object-fit: cover
+        width: 100%
+        height: 100%
+
+    p
+        font-size: 1.125rem
+        color: white
+        position: absolute
+        width: 85%
+        top: 82%
+        left: 8%
+        z-index: 2
+
+    // ul
+    //     font-size: 1.125rem
+    //     color: white
+    //     position: absolute
+    //     width: 85%
+    //     top: 30%
+    //     left: 8%
+    //     z-index: 3
+    //     visibility: hidden

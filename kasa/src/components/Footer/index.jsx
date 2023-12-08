@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
-import "./footer.sass";
-import logo from "../../assets/LOGO.png";
+import logo from "../../assets/LOGO_W.svg";
 
-function Footer() {
+const Footer = () => {
   return (
-    <div className="footercontent">
+    <footer>
       <Link to="/">
         <img src={logo} alt="Logo Kasa" />
       </Link>
-      <p className="footercontent__p">© 2023 Kasa. All rights reserved</p>
-    </div>
+      <p>© 2023 Kasa. All rights reserved</p>
+    </footer>
   );
-}
+};
 
 export default Footer;
