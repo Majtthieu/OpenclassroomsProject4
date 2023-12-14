@@ -4,24 +4,39 @@
   margin: 0 auto;
 }
 
-h2 {
-  font-size: calc(36rem / 16);
-  color: $color1;
-}
-
 .housingMain {
   display: flex;
   justify-content: space-between;
+  margin-top: 2rem;
+  @include xsmall {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  h2 {
+    font-size: calc(36rem / 16);
+    color: $color1;
+    @include xsmall {
+      font-size: 1.5rem;
+    }
+  }
   .title {
     display: flex;
     flex-direction: column;
     &__location {
       font-size: calc(18rem / 16);
       color: $color1;
+      margin-top: 0.5rem;
+      @include xsmall {
+        font-size: calc(14rem / 16);
+      }
     }
     &__tags {
       display: flex;
       gap: 0.5rem;
+      margin: 1.2rem 0;
+      @include xsmall {
+        margin: 0.8rem 0;
+      }
       li {
         display: flex;
         align-items: center;
@@ -32,12 +47,22 @@ h2 {
         border-radius: calc(10rem / 16);
         flex-shrink: 0;
         padding: 0 0.6rem;
+        @include xsmall {
+          font-size: calc(10rem / 16);
+          height: calc(18rem / 16);
+        }
       }
     }
   }
   &__right {
     display: flex;
     flex-direction: column;
+    gap: 1.4rem;
+    @include xsmall {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+    }
     .host {
       display: flex;
       gap: 0.5rem;
@@ -46,6 +71,10 @@ h2 {
         width: 4rem;
         height: 4rem;
         border-radius: 50%;
+        @include xsmall {
+          width: 2rem;
+          height: 2rem;
+        }
       }
       &__name {
         color: $color1;
@@ -53,6 +82,19 @@ h2 {
         font-size: calc(18rem / 16);
         line-height: 142.6%;
         width: 50%;
+        @include xsmall {
+          font-size: 0.75rem;
+        }
+      }
+    }
+    .stars {
+      display: flex;
+      flex-wrap: nowrap;
+      @include xsmall {
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
       }
     }
   }
@@ -61,12 +103,23 @@ h2 {
 .housingCollapse {
   display: flex;
   gap: 4rem;
+  @include xsmall {
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1.25rem;
+  }
   &__description {
     flex: 1;
     max-width: 48%;
+    @include xsmall {
+      max-width: 100%;
+    }
   }
   &__equipments {
     flex: 1;
     max-width: 48%;
+    @include xsmall {
+      max-width: 100%;
+    }
   }
 }
