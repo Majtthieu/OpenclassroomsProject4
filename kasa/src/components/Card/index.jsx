@@ -9,11 +9,6 @@ const Card = () => {
           <div className="card-content">
             <img src={logement.cover} alt={logement.title} />
             <p>{logement.title}</p>
-            {/* <ul>
-            {logement.equipments.map((equipment) => (
-              <li>- {equipment}</li>
-            ))}
-          </ul> */}
           </div>
         </Link>
       ))}

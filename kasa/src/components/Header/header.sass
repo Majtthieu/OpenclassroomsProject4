@@ -3,7 +3,12 @@ header
   display: flex
   align-items: center
   justify-content: space-between
-  margin: 2.5rem 0
+  margin: 2.5rem auto
+  width: 100%
+
+  img
+    @include xsmall
+      width: calc(145rem/16)
 
 .navbar
   display: flex
@@ -11,10 +16,19 @@ header
   ul
     display: flex
     gap: 2.5rem
+    @include xsmall
+      gap: 1.5rem
+    @include xxsmall
+      padding-left: 0.5rem
 
   a
     color: $color1
     font-size: 1.5rem
+    @include xsmall
+      font-size: 1rem
+      text-transform: uppercase
+    @include xxsmall
+      font-size: 0.75rem
 
 .active
   text-decoration: underline

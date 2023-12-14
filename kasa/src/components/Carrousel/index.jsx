@@ -1,49 +1,10 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import arrow from "../../assets/arrow.svg";
 
-const Carrousel = ({ slides }) => {
+const Carrousel = ({ slides, parentWidth }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const sliderStyles = {
-    height: "100%",
-    position: "relative",
-  };
-
-  const slideStyles = {
-    width: "100%",
-    height: "100%",
-    borderRadius: "1.5rem",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundImage: `url(${slides[currentIndex].url})`,
-  };
-
-  const prevArrowStyles = {
-    position: "absolute",
-    top: "50%",
-    left: "2rem",
-    transform: "translateY(-50%) rotate(-90deg)",
-    cursor: "pointer",
-    zIndex: 1,
-  };
-
-  const nextArrowStyles = {
-    position: "absolute",
-    top: "50%",
-    right: "2rem",
-    transform: "translateY(-50%) rotate(90deg)",
-    cursor: "pointer",
-    zIndex: 1,
-  };
-
-  const counterStyles = {
-    position: "absolute",
-    top: "90%",
-    left: "50%",
-    transform: "translate(0, -50%)",
-    zIndex: 1,
-    color: "white",
-  };
+  const timerRef = useRef(null);
 
   const areSeveral = () => slides.length > 1;
 
@@ -53,24 +14,54 @@ const Carrousel = ({ slides }) => {
     setCurrentIndex(newIndex);
   };
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     const isLastSlide = currentIndex === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
-  };
+  }, [currentIndex, slides]);
+
+  useEffect(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    timerRef.current = setTimeout(() => {
+      goToNext();
+    }, 4000);
+
+    return () => clearTimeout(timerRef.current);
+  }, [goToNext]);
 
   return (
-    <div style={sliderStyles}>
-      <div style={prevArrowStyles} onClick={goToPrev}>
+    <div className="sliderStyles">
+      <div className="sliderStyles__prevArrow" onClick={goToPrev}>
         {areSeveral() ? <img src={arrow} alt="arrow" /> : ""}
       </div>
-      <div style={nextArrowStyles} onClick={goToNext}>
+      <div className="sliderStyles__nextArrow" onClick={goToNext}>
         {areSeveral() ? <img src={arrow} alt="arrow" /> : ""}
       </div>
-      <div style={counterStyles}>
+      <div className="sliderStyles__counter">
         {areSeveral() ? `${currentIndex + 1}/${slides.length}` : ""}
       </div>
-      <div style={slideStyles}></div>
+      <div
+        className="sliderStyles__container"
+        style={{
+          width: `${parentWidth * slides.length}vw`,
+          transform: `translateX(-${currentIndex * parentWidth}vw)`,
+        }}
+      >
+        {slides.map((_, slideIndex) => (
+          <div
+            key={slideIndex}
+            className="sliderStyles__container--sized"
+            title="photos du logement"
+            style={{
+              backgroundImage: `url(${slides[slideIndex].url})`,
+              width: `${parentWidth}vw`,
+              height: `${parentWidth / 2}vh`,
+            }}
+          ></div>
+        ))}
+      </div>
     </div>
   );
 };

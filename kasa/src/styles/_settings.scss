@@ -1,11 +1,31 @@
-@mixin displayFc() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 $color1: #ff6060;
 $color2: #f6f6f6;
+
+$large: 1280px;
+$medium: 900px;
+$small: 768px;
+$xsmall: 376px;
+
+@mixin medium {
+  @media (max-width: $large) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: $medium) {
+    @content;
+  }
+}
+@mixin xsmall {
+  @media (max-width: $small) {
+    @content;
+  }
+}
+@mixin xxsmall {
+  @media (max-width: $xsmall) {
+    @content;
+  }
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
@@ -31,9 +51,12 @@ body {
 }
 
 .wrapper {
-  max-width: 1240px;
+  width: 1280px;
   margin: 0 auto;
-  // padding: 0 1.5rem;
+  padding: 0 1.25rem;
+  @include medium {
+    width: 100%;
+  }
 }
 
 li {

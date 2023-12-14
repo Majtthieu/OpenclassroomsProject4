@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 function Banner(props) {
   const { title, alt, imageUrl } = props;
 
@@ -10,11 +8,5 @@ function Banner(props) {
     </div>
   );
 }
-
-Banner.propTypes = {
-  title: PropTypes.string,
-  alt: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-};
 
 export default Banner;

@@ -5,7 +5,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Error from './pages/Error';
 import Housing from './pages/Housing';
-import logements from "./datas/logements.json";
 
 const App = () => {
     return (
@@ -16,9 +15,7 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="*" element={<Error />} />
-                    {logements.map((logement) => (
-                        <Route path={"/housing/" + logement.id} element={<Housing />} />
-                    ))}
+                    <Route path="/housing/:id" element={<Housing />} />
                 </Routes>
             </div>
             <Footer />
