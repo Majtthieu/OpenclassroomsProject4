@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import arrow from "../../assets/arrow.svg";
+import arrow from "../../assets/arrow-carr.svg";
 
 const Carrousel = ({ slides, parentWidth }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,8 +45,8 @@ const Carrousel = ({ slides, parentWidth }) => {
       <div
         className="sliderStyles__container"
         style={{
-          width: `${parentWidth * slides.length}vw`,
-          transform: `translateX(-${currentIndex * parentWidth}vw)`,
+          width: `${100 * slides.length}%`,
+          transform: `translateX(-${(currentIndex * 100) / slides.length}%)`,
         }}
       >
         {slides.map((_, slideIndex) => (
@@ -56,8 +56,6 @@ const Carrousel = ({ slides, parentWidth }) => {
             title="photos du logement"
             style={{
               backgroundImage: `url(${slides[slideIndex].url})`,
-              width: `${parentWidth}vw`,
-              height: `${parentWidth / 2}vh`,
             }}
           ></div>
         ))}

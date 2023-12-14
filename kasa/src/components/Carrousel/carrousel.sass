@@ -30,18 +30,28 @@
     &__prevArrow
         position: absolute
         top: 50%
-        left: 2rem
-        transform: translateY(-50%) rotate(-90deg)
+        left: 1.5rem
+        transform: translateY(-50%) rotate(-180deg)
         cursor: pointer
         z-index: 1
+        @include xsmall
+            left: 1rem
+        img
+            @include xsmall
+                height: 1.25rem
 
     &__nextArrow
         position: absolute
         top: 50%
-        right: 2rem
-        transform: translateY(-50%) rotate(90deg)
+        right: 1.5rem
+        transform: translateY(-50%)
         cursor: pointer
         z-index: 1
+        @include xsmall
+            right: 1rem
+        img
+            @include xsmall
+                height: 1.25rem
 
     &__counter
         position: absolute
@@ -50,3 +60,5 @@
         transform: translate(0, -50%)
         z-index: 1
         color: white
+        @include xsmall
+            display: none
