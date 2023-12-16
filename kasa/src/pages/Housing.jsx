@@ -33,7 +33,6 @@ function Housing() {
       <div className="carrousel">
         <Carrousel
           slides={logement.pictures.map((picture) => ({ url: picture })).flat()}
-          parentWidth={50}
         />
       </div>
       <div className="housingMain">

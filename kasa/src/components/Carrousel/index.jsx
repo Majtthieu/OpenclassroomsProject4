@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import arrow from "../../assets/arrow-carr.svg";
 
-const Carrousel = ({ slides, parentWidth }) => {
+const Carrousel = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const timerRef = useRef(null);
@@ -31,6 +31,17 @@ const Carrousel = ({ slides, parentWidth }) => {
     return () => clearTimeout(timerRef.current);
   }, [goToNext]);
 
+  const memoizedSlideElements = useMemo(() => {
+    return slides.map((_, slideIndex) => (
+      <div
+        key={slideIndex}
+        className="sliderStyles__container--sized"
+        title="photos du logement"
+        style={{ backgroundImage: `url(${slides[slideIndex].url})` }}
+      ></div>
+    ));
+  }, [slides]);
+
   return (
     <div className="sliderStyles">
       <div className="sliderStyles__prevArrow" onClick={goToPrev}>
@@ -49,19 +60,9 @@ const Carrousel = ({ slides, parentWidth }) => {
           transform: `translateX(-${(currentIndex * 100) / slides.length}%)`,
         }}
       >
-        {slides.map((_, slideIndex) => (
-          <div
-            key={slideIndex}
-            className="sliderStyles__container--sized"
-            title="photos du logement"
-            style={{
-              backgroundImage: `url(${slides[slideIndex].url})`,
-            }}
-          ></div>
-        ))}
+        {memoizedSlideElements}
       </div>
     </div>
   );
 };
-
 export default Carrousel;
