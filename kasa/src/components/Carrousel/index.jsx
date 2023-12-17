@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import arrow from "../../assets/arrow-carr.svg";
+import Loader from "../Loader";
 
 const Carrousel = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDataLoading, setDataLoading] = useState(false);
 
   const timerRef = useRef(null);
 
@@ -32,6 +34,7 @@ const Carrousel = ({ slides }) => {
   }, [goToNext]);
 
   const memoizedSlideElements = useMemo(() => {
+    setDataLoading(true);
     return slides.map((_, slideIndex) => (
       <div
         key={slideIndex}
@@ -42,7 +45,15 @@ const Carrousel = ({ slides }) => {
     ));
   }, [slides]);
 
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setDataLoading(false);
+    }, 2000);
+  }, [memoizedSlideElements]);
+
+  return isDataLoading ? (
+    <Loader />
+  ) : (
     <div className="sliderStyles">
       <div className="sliderStyles__prevArrow" onClick={goToPrev}>
         {areSeveral() ? <img src={arrow} alt="arrow" /> : ""}
