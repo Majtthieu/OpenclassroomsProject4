@@ -19,46 +19,70 @@ function Housing() {
           slides={logement.pictures.map((picture) => ({ url: picture }))}
         />
       </div>
-      <div className="housingMain">
-        <div className="title">
-          <h2>{logement.title}</h2>
-          <h3 className="title__location">{logement.location}</h3>
-          <ul className="title__tags">
-            {logement.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="housingMain__right">
-          <div className="host">
-            <p className="host__name">{logement.host.name}</p>
-            <img
-              className="host__pic"
-              src={logement.host.picture}
-              alt="portrait de l'hôte"
-            />
-          </div>
-          <Stars rating={logement.rating} />
-        </div>
-      </div>
+      <HousingDatas
+        title={logement.title}
+        location={logement.location}
+        tags={logement.tags}
+        host={logement.host}
+        rating={logement.rating}
+      />
       <div className="housingCollapse">
-        <div className="housingCollapse__description">
-          <Collapse label="Description">
-            <p>{logement.description}</p>
-          </Collapse>
-        </div>
-        <div className="housingCollapse__equipments">
-          <Collapse label="Équipements">
-            <ul>
-              {logement.equipments.map((equipment) => (
-                <li key={equipment}>{equipment}</li>
-              ))}
-            </ul>
-          </Collapse>
-        </div>
+        <HousingDescription description={logement.description} />
+        <HousingEquipments equipments={logement.equipments} />
       </div>
     </main>
   );
 }
+
+const HousingDatas = ({ title, location, tags, host, rating }) => {
+  return (
+    <div className="housingMain">
+      <div className="title">
+        <h2>{title}</h2>
+        <h3 className="title__location">{location}</h3>
+        <ul className="title__tags">
+          {tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="housingMain__right">
+        <div className="host">
+          <p className="host__name">{host.name}</p>
+          <img
+            className="host__pic"
+            src={host.picture}
+            alt="portrait de l'hôte"
+          />
+        </div>
+        <Stars rating={rating} />
+      </div>
+    </div>
+  );
+};
+
+const HousingDescription = ({ description }) => {
+  return (
+    <div className="housingCollapse__description">
+      <Collapse label="Description">
+        <p>{description}</p>
+      </Collapse>
+    </div>
+  );
+};
+
+const HousingEquipments = ({ equipments }) => {
+  return (
+    <div className="housingCollapse__equipments">
+      <Collapse label="Équipements">
+        <ul>
+          {equipments.map((equipment) => (
+            <li key={equipment}>{equipment}</li>
+          ))}
+        </ul>
+      </Collapse>
+    </div>
+  );
+};
 
 export default Housing;

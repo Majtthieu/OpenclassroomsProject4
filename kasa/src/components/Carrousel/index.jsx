@@ -8,11 +8,9 @@ const Carrousel = ({ slides }) => {
 
   const timerRef = useRef(null);
 
-  const areSeveral = () => slides.length > 1;
-
   const ArrowButton = ({ onClick, direction }) => (
     <div className={`sliderStyles__${direction}Arrow`} onClick={onClick}>
-      {areSeveral() && <img src={arrow} alt="flèche" />}
+      {slides.length > 1 && <img src={arrow} alt="flèche" />}
     </div>
   );
 
@@ -63,7 +61,7 @@ const Carrousel = ({ slides }) => {
       <ArrowButton onClick={goToPrev} direction="prev" />
       <ArrowButton onClick={goToNext} direction="next" />
       <div className="sliderStyles__counter">
-        {areSeveral() ? `${currentIndex + 1}/${slides.length}` : ""}
+        {slides.length > 1 ? `${currentIndex + 1}/${slides.length}` : ""}
       </div>
       <div
         className="sliderStyles__container"
