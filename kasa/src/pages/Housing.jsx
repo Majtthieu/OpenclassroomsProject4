@@ -2,8 +2,7 @@ import Carrousel from "../components/Carrousel";
 import logements from "../datas/logements.json";
 import Collapse from "../components/Collapse";
 import { useParams, Navigate } from "react-router-dom";
-import starActive from "../assets/star-active.svg";
-import starInactive from "../assets/star-inactive.svg";
+import Stars from "../components/Stars";
 
 function Housing() {
   const { id } = useParams();
@@ -13,26 +12,11 @@ function Housing() {
     return <Navigate to="/error" />;
   }
 
-  const getStars = () => {
-    const stars = logement.rating;
-    const starsArray = [];
-    for (let i = 0; i < 5; i++) {
-      if (i < stars) {
-        starsArray.push(<img key={i} src={starActive} alt="étoile active" />);
-      } else {
-        starsArray.push(
-          <img key={i} src={starInactive} alt="étoile inactive" />
-        );
-      }
-    }
-    return starsArray;
-  };
-
   return (
     <main>
       <div className="carrousel">
         <Carrousel
-          slides={logement.pictures.map((picture) => ({ url: picture })).flat()}
+          slides={logement.pictures.map((picture) => ({ url: picture }))}
         />
       </div>
       <div className="housingMain">
@@ -54,7 +38,7 @@ function Housing() {
               alt="portrait de l'hôte"
             />
           </div>
-          <div className="stars">{getStars()}</div>
+          <Stars rating={logement.rating} />
         </div>
       </div>
       <div className="housingCollapse">

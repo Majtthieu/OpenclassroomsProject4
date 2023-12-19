@@ -40,7 +40,6 @@ const Carrousel = ({ slides }) => {
   }, [goToNext]);
 
   const memoizedSlideElements = useMemo(() => {
-    setDataLoading(true);
     return slides.map((_, slideIndex) => (
       <div
         key={slideIndex}
