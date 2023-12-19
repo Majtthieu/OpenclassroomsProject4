@@ -8,7 +8,7 @@ const Card = () => {
         <Link to={"/housing/" + logement.id} key={logement.id}>
           <div className="card-content">
             <img src={logement.cover} alt={logement.title} />
-            <p>{logement.title}</p>
+            <h2>{logement.title}</h2>
           </div>
         </Link>
       ))}

@@ -38,7 +38,7 @@ function Housing() {
       <div className="housingMain">
         <div className="title">
           <h2>{logement.title}</h2>
-          <p className="title__location">{logement.location}</p>
+          <h3 className="title__location">{logement.location}</h3>
           <ul className="title__tags">
             {logement.tags.map((tag) => (
               <li key={tag}>{tag}</li>

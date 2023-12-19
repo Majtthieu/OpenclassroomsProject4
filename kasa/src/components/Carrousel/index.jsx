@@ -4,11 +4,17 @@ import Loader from "../Loader";
 
 const Carrousel = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDataLoading, setDataLoading] = useState(false);
+  const [isDataLoading, setDataLoading] = useState(true);
 
   const timerRef = useRef(null);
 
   const areSeveral = () => slides.length > 1;
+
+  const ArrowButton = ({ onClick, direction }) => (
+    <div className={`sliderStyles__${direction}Arrow`} onClick={onClick}>
+      {areSeveral() && <img src={arrow} alt="flèche" />}
+    </div>
+  );
 
   const goToPrev = () => {
     const isFirstSlide = currentIndex === 0;
@@ -55,12 +61,8 @@ const Carrousel = ({ slides }) => {
     <Loader />
   ) : (
     <div className="sliderStyles">
-      <div className="sliderStyles__prevArrow" onClick={goToPrev}>
-        {areSeveral() ? <img src={arrow} alt="arrow" /> : ""}
-      </div>
-      <div className="sliderStyles__nextArrow" onClick={goToNext}>
-        {areSeveral() ? <img src={arrow} alt="arrow" /> : ""}
-      </div>
+      <ArrowButton onClick={goToPrev} direction="prev" />
+      <ArrowButton onClick={goToNext} direction="next" />
       <div className="sliderStyles__counter">
         {areSeveral() ? `${currentIndex + 1}/${slides.length}` : ""}
       </div>
