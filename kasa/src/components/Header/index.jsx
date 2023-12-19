@@ -1,6 +1,17 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/LOGO.svg";
 
+const ActiveNavLink = ({ to, label }) => {
+  return (
+    <NavLink
+      className={({ isActive }) => (isActive ? "active" : "notactive")}
+      to={to}
+    >
+      {label}
+    </NavLink>
+  );
+};
+
 const Header = () => {
   return (
     <header>
@@ -12,20 +23,10 @@ const Header = () => {
       <nav className="navbar">
         <ul>
           <li>
-            <NavLink
-              className={({ isActive }) => (isActive ? "active" : "notactive")}
-              to="/"
-            >
-              Accueil
-            </NavLink>
+            <ActiveNavLink to="/" label="Accueil" />
           </li>
           <li>
-            <NavLink
-              className={({ isActive }) => (isActive ? "active" : "notactive")}
-              to="/about"
-            >
-              À propos
-            </NavLink>
+            <ActiveNavLink to="/about" label="À propos" />
           </li>
         </ul>
       </nav>
