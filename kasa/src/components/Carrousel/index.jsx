@@ -75,4 +75,5 @@ const Carrousel = ({ slides }) => {
     </div>
   );
 };
+
 export default Carrousel;
