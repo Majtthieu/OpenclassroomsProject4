@@ -37,6 +37,7 @@ const Carrousel = ({ slides }) => {
     return () => clearTimeout(timerRef.current);
   }, [goToNext]);
 
+  // Recalcul uniquement si les dépendances changent (slides)
   const memoizedSlideElements = useMemo(() => {
     return slides.map((_, slideIndex) => (
       <div

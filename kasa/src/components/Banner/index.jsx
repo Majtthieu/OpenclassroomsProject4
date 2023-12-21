@@ -1,6 +1,4 @@
-function Banner(props) {
-  const { title, alt, imageUrl } = props;
-
+function Banner({ title, alt, imageUrl }) {
   return (
     <div className="banner">
       <img src={imageUrl} alt={alt} />

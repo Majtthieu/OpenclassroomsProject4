@@ -5,9 +5,11 @@ import { useParams, Navigate } from "react-router-dom";
 import Stars from "../components/Stars";
 
 function Housing() {
+  // l'id que l'on récupère ici est celui qui est passé dans l'url depuis les routes
   const { id } = useParams();
   const logement = logements.find((logement) => logement.id === id);
 
+  // Si aucune correpondance n'est trouvée, on redirige vers la page d'erreur
   if (!logement) {
     return <Navigate to="/error" />;
   }

@@ -8,6 +8,7 @@ function Collapse(props) {
     setOPen(!open);
   };
 
+  // useRef pour aller chercher l'exacte hauteur nécessaire pour le collapse
   const myRef = useRef();
   const myRefValue = myRef.current;
 

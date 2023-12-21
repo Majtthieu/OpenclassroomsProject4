@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/LOGO.svg";
 
+// Application d'un style pour indiquer la page active
 const ActiveNavLink = ({ to, label }) => {
   return (
     <NavLink
